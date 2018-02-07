@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ZigBee Gateway Device API
+Bundle-SymbolicName: jemma.osgi.zgd.api
+Bundle-Version: 1.0.0.qualifier
+Export-Package: org.energy_home.jemma.zgd;version="1.5.0";uses:="org.energy_home.jemma.zgd.jaxb",
+ org.energy_home.jemma.zgd.jaxb;version="1.0.4";uses:="javax.xml.bind,javax.xml.bind.annotation,javax.xml.bind.annotation.adapters"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.osgi.service.component;version="1.2.2",
+ org.slf4j
