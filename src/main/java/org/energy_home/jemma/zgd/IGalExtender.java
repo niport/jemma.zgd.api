@@ -24,6 +24,8 @@ package org.energy_home.jemma.zgd;
  *         or <a href="marco.niedducv@gmail.com ">marco.niedducv@gmail.com</a>
  *         from Consoft Sistemi S.P.A.<http://www.consoft.it>, financed by EIT
  *         ICT Labs activity SecSES - Secure Energy Systems (activity id 13030)"
+ * 
+ * @deprecated
  */
 public interface IGalExtender extends GatewayInterface {
 
