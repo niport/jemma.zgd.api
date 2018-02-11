@@ -76,35 +76,17 @@ public interface GatewayInterface {
 	Version getVersion() throws IOException, Exception, GatewayException;
 
 	/**
-	 * Retrieves a particular attribute from the ZigBee attributes information
-	 * base as defined in ZigBee Alliance
+	 * Retrieves a particular attribute of the database InfoBaseAttribute defined
+	 * in ZigBee Alliance
 	 * 
 	 * @param attrId
 	 *          the ID of the attribute to retrieve
-	 * @return the attribute value
+	 * @return
+	 * @throws Exception
 	 * @throws Exception
 	 * @throws GatewayException
 	 */
-	@Deprecated
 	String getInfoBaseAttribute(short attrId) throws Exception, GatewayException;
-
-	/**
-	 * Retrieves a particular attribute from the ZigBee attributes information
-	 * base as defined in ZigBee Alliance
-	 * 
-	 * @param ib
-	 *          Information Base where the attribute is located (0 -> APS IB, 1 ->
-	 *          NIB)
-	 * 
-	 * @param attrId
-	 *          the ID of the attribute to retrieve
-	 * 
-	 * 
-	 * @return the attribute value
-	 * @throws Exception
-	 * @throws GatewayException
-	 */
-	Object getInfoBaseAttribute(short ib, short attrId) throws Exception, GatewayException;
 
 	/**
 	 * Set a particular attribute of the database InfoBaseAttribute defined in
@@ -119,7 +101,7 @@ public interface GatewayInterface {
 	 * @throws Exception
 	 * @throws GatewayException
 	 */
-	void setInfoBaseAttribute(short attrId, Object value) throws IOException, Exception, GatewayException;
+	void setInfoBaseAttribute(short attrId, String value) throws IOException, Exception, GatewayException;
 
 	/**
 	 * Allows the creation of a callback to receive APS/ZDP/ZCL messages using a
@@ -437,7 +419,7 @@ public interface GatewayInterface {
 	void clearEndpoint(short endpoint) throws IOException, Exception, GatewayException;
 
 	/**
-	 * It's a command to generate the disassociation of all the nodes from the
+	 * It is a command to generate the disassociation of all the nodes from the
 	 * network ZigBee
 	 * 
 	 * @throws IOException
@@ -447,7 +429,7 @@ public interface GatewayInterface {
 	void leaveAll() throws IOException, Exception, GatewayException;
 
 	/**
-	 * It's a command to generate the disassociation of all the nodes from the
+	 * It is a command to to generate the disassociation of all the nodes from the
 	 * network ZigBee
 	 * 
 	 * @throws IOException
@@ -457,8 +439,8 @@ public interface GatewayInterface {
 	Status leaveAllSync() throws IOException, Exception, GatewayException;
 
 	/**
-	 * It's a command to generate the disassociation of a node from the network
-	 * ZigBee
+	 * It is a command to to generate the disassociation of a node from the
+	 * network ZigBee
 	 * 
 	 * @param timeout
 	 * @param addrOfInterest
@@ -470,7 +452,7 @@ public interface GatewayInterface {
 	void leave(long timeout, Address addrOfInterest) throws IOException, Exception, GatewayException;
 
 	/**
-	 * It's a command to generate the disassociation of a node from the network
+	 * It is a command to generate the disassociation of a node from the network
 	 * ZigBee. Mask equals to 0x00 close the network, 0xff leaves the network
 	 * open, and any other value leaves the network open for that number of
 	 * seconds.
@@ -485,7 +467,7 @@ public interface GatewayInterface {
 	Status leaveSync(long timeout, Address addrOfInterest, int mask) throws IOException, Exception, GatewayException;
 
 	/*
-	 * It's a command to generate the disassociation of a node from the network
+	 * It is a command to generate the disassociation of a node from the network
 	 * ZigBee. Mask equals to 0x00 close the network, 0xff leaves the network
 	 * open, and any other value leaves the network open for that number of
 	 * seconds.
@@ -769,39 +751,5 @@ public interface GatewayInterface {
 	 * @throws GatewayException
 	 */
 	void sendZDPCommand(long timeout, ZDPCommand command) throws IOException, Exception, GatewayException;
-
-	void setGroupsEventsListener(GroupsManagerListerner listerner);
-
-	/**
-	 * Adds the passed EndPoint to the passed group address. Once completed the
-	 * addGroupConfirm callback is called on any registered listener.
-	 * 
-	 * @param groupAddress
-	 * @param epId
-	 * @throws IOException
-	 */
-	void addGroup(int groupAddress, short epId, long timeout) throws IOException;
-
-	/**
-	 * Remove the passed EndPoint from the group groupAddress. Once completed the
-	 * removeGroupConfirm callback is called on any registered listener.
-	 * 
-	 * @param groupAddress
-	 *          The group address (i.e. a 16 bits address)
-	 * @param epId
-	 *          The EndPoint Identifier (should be in the range [1, 253]
-	 * @throws IOException
-	 */
-	void removeGroup(int groupAddress, short epId, long timeout) throws IOException;
-
-	/**
-	 * Removes the passed EP from all the groups it belongs. Once completed the
-	 * removeAllGroupsConfirm callback is called on any registered listener.
-	 * 
-	 * @param epId
-	 *          The Enpoint ID
-	 * @throws IOException
-	 */
-	void removeAllGroups(short epId, long timeout) throws IOException;
 
 }
